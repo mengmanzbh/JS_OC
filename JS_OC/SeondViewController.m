@@ -28,6 +28,8 @@
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:path]];
     [_webView loadRequest:request];
     
+   }
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
     JSContext *context = [self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     //定义好JS要调用的方法, share就是调用的share方法名
     context[@"share"] = ^() {
@@ -43,8 +45,8 @@
         
         NSLog(@"-------End Log-------");
     };
-}
 
+}
 - (void)rightAction
 {
     JSContext *context = [self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
